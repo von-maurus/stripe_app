@@ -1,0 +1,24 @@
+name: stripe_app
+description: "A payment app for processing stripe transaction with credit cards
+  from the Flutter Advanced Course by Fernando Herrera."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  bloc: ^9.0.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.0
+  flutter_credit_card: ^4.1.0
+  font_awesome_flutter: ^10.8.0
+
+dev_dependencies:
+  flutter_lints: ^5.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
