@@ -1,3 +1,5 @@
 # stripe_app
 
-A new Flutter project.
+A Flutter project about payments and credits cards using Stripe. From Fernando Herrera's Advanced Flutter Course.
+
+
