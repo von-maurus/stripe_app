@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stripe_app/bloc/pay/pay_bloc.dart';
 
 class PaymentDetailWidget extends StatelessWidget {
   const PaymentDetailWidget({super.key});
@@ -11,7 +13,6 @@ class PaymentDetailWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     return Container(
       width: width,
-      height: 100,
       padding: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -23,26 +24,32 @@ class PaymentDetailWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Total',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(height: 5),
-                  Text(
-                    '200.00 USD',
-                    style: TextStyle(fontSize: 20),
-                  )
-                ],
-              ),
-              PaymentBtnWidget(),
-            ],
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Total',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      '200.00 USD',
+                      style: TextStyle(fontSize: 20),
+                    )
+                  ],
+                ),
+                BlocBuilder<PayBloc, PayState>(
+                  builder: (context, state) {
+                    return PaymentBtnWidget(payWithCard: state.active);
+                  },
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -51,11 +58,12 @@ class PaymentDetailWidget extends StatelessWidget {
 }
 
 class PaymentBtnWidget extends StatelessWidget {
-  const PaymentBtnWidget({super.key});
+  const PaymentBtnWidget({super.key, this.payWithCard = false});
 
+  final bool payWithCard;
   @override
   Widget build(BuildContext context) {
-    return !true ? buildNormalBtnWidget(context) : buildAppleGoogleBtnWidget(context);
+    return payWithCard ? buildNormalBtnWidget(context) : buildAppleGoogleBtnWidget(context);
   }
 
   Widget buildNormalBtnWidget(BuildContext context) {

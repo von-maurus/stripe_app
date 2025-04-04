@@ -10,5 +10,6 @@ A Flutter project about payments and credits cards using Stripe. From Fernando H
 - Stripe payment API.
 - BLoC pattern.
 - Clean code practices. 
+- Payment logic with stripe. Payments intents, payment states, charges, register and new credit cards, etc. 
 
 
