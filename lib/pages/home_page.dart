@@ -17,12 +17,12 @@ class HomePage extends StatelessWidget {
         title: const Text('Pagar'),
         actions: [
           IconButton(
+            icon: Icon(Icons.add),
             onPressed: () async {
               showLoader(context);
               await Future.delayed(Duration(seconds: 1));
               if (context.mounted) Navigator.pop(context);
             },
-            icon: Icon(Icons.add),
           ),
         ],
       ),

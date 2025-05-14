@@ -1,0 +1,2 @@
+/Users/msanz/Development/flutter-learning/stripe_app/android/app/.cxx/Debug/2i53372o/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/msanz/Development/flutter-learning/stripe_app/android/app/.cxx/Debug/2i53372o/armeabi-v7a/CMakeFiles/rebuild_cache.dir
